@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<!-- ############################## -->
+    {% if user %}
+    <h1>Here you go {{user.username}}!</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td><img src="{{drink['strDrinkThumb']}}" height="100" width="80"></td>
+            
+            <tr>
+                <td>Drink Name:</td>
+                <td>{{drink['strDrink']}}</td>
+                
+            </tr>
+            <tr>
+                <td>Glass:</td>
+                <td>{{drink['strGlass']}}</td>
+                
+            </tr>
+            <tr>
+                <td>How to make:</td>
+                <td>{{drink['strInstructions']}}</td>
+            </tr>
+            <tr>
+                <td>Ingredients:</td>
+                {% for details in drink_details %}
+                    {% for item in details %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <!-- <button class="btn btn-primary btn-lg btn-block"><a href="/review/{{user.id}}"></a>Write review</button> -->
+    <div class="row">
+        <div class="col-md-3">
+    <a href="/review/{{ user.id }}?drink={{drink['strDrink']}}" class="btn btn-primary btn-lg btn-block">Write review</a>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <form action="/add_favorite/{{drink}}?userid={{user.id}}" method="POST">
+                <button class="btn btn-primary btn-lg btn-block">Store in Favorites</button>
+                </form>
+            </div>
+        </div>
+</div>
+<div class="container">
+    <div class="row">
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>Reviews</h2>
+    </div>
+    <div class="row">
+        {% for review in reviews %}
+        <h4 class="col-md-3">{{ review.drinkname }}</h4>
+        <p class="col-md-9">{{ review.review }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- <h1>{{drink_name}}</h1>
+<h2>{{glass}}</h2> -->
+{% endblock %}

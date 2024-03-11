@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<!-- ############################## -->
+    {% if user %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">Drinks with {{ingredient}}</h1></div>
+    </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="table table-striped">
+        <tbody>
+            {% for drink in drink %}
+            <tr>
+                <td><img src="{{drink['strDrinkThumb']}}" height="75" width="55"></td>
+                <td><h3>Drink Name:</h3><h4>{{drink['strDrink']}}</h4></td>
+                
+            {% endfor %}
+                
+        </tbody>
+    </table>
+    
+<!--     
+            {% for drink in drink %}
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{drink['strDrinkThumb']}}" height="80" width="60">
+                
+                </div>
+                <div class="col-md-6">
+                <h3>Drink Name:</h3>
+                <h4>{{drink['strDrink']}}</h4>
+                </div>
+            </div>
+            {% endfor %} -->
+                
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<!-- ############################## -->
+    {% if user %}
+    <h1>Here you go {{user.username}}!</h1>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <img src="{{drink['strDrinkThumb']}}" height="100" with="80">
+    <table class="table table-striped">
+        <tbody>
+            
+            <tr>
+                <td>Drink Name:</td>
+                <td>{{drink['strDrink']}}</td>
+                
+            </tr>
+            <tr>
+                <td>Glass:</td>
+                <td>{{drink['strGlass']}}</td>
+                
+            </tr>
+            <tr>
+                <td>How to make:</td>
+                <td>{{drink['strInstructions']}}</td>
+            </tr>
+            <tr>
+                <td>Ingredients:</td>
+                {% for details in drink_details %}
+                    {% for item in details %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary btn-lg btn-block"><a href="/review/{{user.id}}">Review</a></button>
+</div>
+
+<!-- <h1>{{drink_name}}</h1>
+<h2>{{glass}}</h2> -->
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">Welcome {{user.username}}</h1></div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-group">
+        <form action="/user_get_drink/{{ user.id }}" method="POST">
+            <label for="drink">Search for a drink by name:</label>
+            <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+        <form action="/user_use_ingredient/{{ user.id }}" method="POST">
+            <label for="ingredient">Search for drinks by ingredient:</label>
+            <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+        <form action="/user_get_drink/{{ user.id }}" method="POST">
+            <label for="drink">Search for a drink at random():</label>
+            <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2>My Reviews</h2>
+    </div>
+    <div class="row">
+        {% for review in reviews %}
+        <h4 class="col-md-3">{{review.drinkname}}</h4>
+        <h4 class=col-md-3>{{review.title}}</h4>
+        <p class="col-md-9">{{ review.review}}</p>
+        {% endfor %}
+    </div>
+
+    </div>
+</div>
+{% endblock %}

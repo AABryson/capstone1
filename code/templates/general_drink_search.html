@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <img src="{{drink['strDrinkThumb']}}">
+    <table class="table table-striped">
+        <tbody>
+            
+            <tr>
+                <td>Drink Name:</td>
+                <td>{{drink['strDrink']}}</td>
+                
+            </tr>
+            <tr>
+                <td>Glass:</td>
+                <td>{{drink['strGlass']}}</td>
+                
+            </tr>
+            <tr>
+                <td>How to make:</td>
+                <td>{{drink['strInstructions']}}</td>
+            </tr>
+            <tr>
+                <td>Ingredients:</td>
+                {% for details in drink_details %}
+                    {% for item in details %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <h1>{{drink_name}}</h1>
+<h2>{{glass}}</h2> -->
+
+
+{% endblock %}

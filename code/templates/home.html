@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1>Cocktail Enyclopedia</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-group">
+        <form action="/get_drink" method="POST">
+            <label for="drink">Search for a drink by name:</label>
+            <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="form-group">
+        <form action="/use_ingredient" method="POST">
+            <label for="ingredient">Search for drinks that have a particular ingredient:</label>
+            <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="form-group">
+        <form action="/get_drink" method="POST">
+            <label for="ingredient">Search for a drink by ingredient:</label>
+            <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
