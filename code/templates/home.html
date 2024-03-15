@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h1>Cocktail Enyclopedia</h1>
+<h1>The Cocktail Enyclopedia</h1>
 {% endblock %}
 
 {% block content %}
@@ -10,25 +10,29 @@
         <form action="/get_drink" method="POST">
             <label for="drink">Search for a drink by name:</label>
             <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
         </form>
     </div>
 </div>
 <div class="container">
     <div class="form-group">
         <form action="/use_ingredient" method="POST">
-            <label for="ingredient">Search for drinks that have a particular ingredient:</label>
+            <label for="ingredient">Search by ingredient:</label>
             <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
         </form>
     </div>
 </div>
 
 <div class="container">
-    <div class="form-group">
-        <form action="/get_drink" method="POST">
-            <label for="ingredient">Search for a drink by ingredient:</label>
-            <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
+    <div class="row">
+        <form method='GET' action="/random_drink">
+            <label class="ml-3" for="drink">Search for a random drink</label>
+            <button type="submit" class="btn btn-primary ml-3">Search</button>
         </form>
     </div>
 </div>
+
+
 
 {% endblock %}

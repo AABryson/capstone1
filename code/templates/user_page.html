@@ -15,7 +15,7 @@
         <form action="/user_get_drink/{{ user.id }}" method="POST">
             <label for="drink">Search for a drink by name:</label>
             <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
         </form>
     </div>
 </div>
@@ -24,32 +24,46 @@
         <form action="/user_use_ingredient/{{ user.id }}" method="POST">
             <label for="ingredient">Search for drinks by ingredient:</label>
             <input type="text" class="form-control" name="ingredient" placeholder="Name of ingredient">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-</div>
-<div class="container">
-    <div class="form-group">
-        <form action="/user_get_drink/{{ user.id }}" method="POST">
-            <label for="drink">Search for a drink at random():</label>
-            <input type="text" class="form-control" name="drink" placeholder="Name of cocktail">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
         </form>
     </div>
 </div>
 
 <div class="container">
+    <div class="row">
+    <form method='GET' action="/user_random_drink/{{ user.id }}">
+        <label class=ml-3 for="drink">Search for a random drink</label>
+        <!-- <input type="text" class="form-control" name="drink" placeholder="A random drink"> -->
+        <button type="submit" class="btn btn-primary ml-3">Search</button>
+    </form>
+    </div>
+</div>
+
+
+<div class="container mt-4">
     <div class="row">
         <h2>My Reviews</h2>
     </div>
     <div class="row">
         {% for review in reviews %}
-        <h4 class="col-md-3">{{review.drinkname}}</h4>
-        <h4 class=col-md-3>{{review.title}}</h4>
-        <p class="col-md-9">{{ review.review}}</p>
+        <h4 class="col-1">{{review.drinkname}}</h4>
+        <h4 class="col-2">{{review.title}}</h4>
+        <p class="col-9">{{ review.review}}</p>
         {% endfor %}
     </div>
-
+</div>
+<div class="container mt-4">
+    <!-- <div class="row mt-4"> -->
+    <div class="row">
+        <h2>My Favorites</h2>
+    </div>
+        {% for f in favorites %}
+        <h4 classs="row">{{ f.drinkname }}</h4>
+        {% endfor %}
+    <div class="row">
+        <form method="GET" action="/edit_user_favorites/{{ user.id }}">
+        <button type="submit" class="btn btn-primary">Edit favorites</button>
+        </form>
     </div>
 </div>
 {% endblock %}

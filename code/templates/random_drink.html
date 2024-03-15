@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
-
 {% block title %}
-<!-- ############################## -->
-    <h1 class="ml-4">Here you go</h1>
-
+<h1 class="ml-4 mb-3">One random drink - just as you ordered</h1>
 {% endblock %}
-
 {% block content %}
 <div class="container">
-    <img src="{{drink['strDrinkThumb']}}" height="100" with="80">
     <table class="table table-striped">
         <tbody>
+        <tr>
+            <td>
+                <img src="{{drink['strDrinkThumb']}}" height="120" width="90">
+            </td>
             
             <tr>
                 <td>Drink Name:</td>
@@ -24,7 +23,7 @@
             </tr>
             <tr>
                 <td>How to make:</td>
-                <td>{{drink['strInstructions']}}</td>
+                <td class="col-10">{{drink['strInstructions']}}</td>
             </tr>
             <tr>
                 <td>Ingredients:</td>
@@ -52,7 +51,26 @@
             {% endfor %}
         </div>
     
+    {% if user %}
+    <form method="GET" action="/user_page/{{ user.id }}">
+        <button type="submit" class="btn btn-primary">Return</button>
+    </form>
+    {% endif %}
+ 
 </div>
+
+
+<!-- <div class="container">
+    <div class="row">
+        <h2>Reviews</h2>
+    </div>
+    <div class="row">
+        {% for review in reviews %}
+        <h4 class="col-md-2 text-right">{{ review.title }}</h4>
+        <p class="col-md-9 text-left">{{ review.review }}</p>
+        {% endfor %}
+    </div>
+</div> -->
 
 <!-- <h1>{{drink_name}}</h1>
 <h2>{{glass}}</h2> -->

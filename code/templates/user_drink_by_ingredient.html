@@ -2,11 +2,13 @@
 
 {% block title %}
 <!-- ############################## -->
+    <!-- {% if user %} -->
     <div class="container">
     <div class="row">
         <div class="col-md-12"><h1 class="text-center">Drinks with {{ingredient}}</h1></div>
     </div>
-
+<!-- 
+    {% endif %} -->
 {% endblock %}
 
 {% block content %}
@@ -18,7 +20,7 @@
                 <td><img src="{{drink['strDrinkThumb']}}" height="75" width="55"></td>
                 <td>
                     <h3>Drink Name:</h3>
-                    <h4><a href="/get_drink_with_ingredient?drink={{ drink['strDrink'] }}">{{drink['strDrink']}}</a></h4>
+                    <h4><a href="/user_get_drink_with_ingredient/{{ user.id }}?drink={{ drink['strDrink'] }}">{{drink['strDrink']}}</a></h4>
                     </td>
                 
             {% endfor %}

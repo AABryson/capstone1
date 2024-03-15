@@ -13,6 +13,7 @@
         <tbody>
         <tr>
             <td><img src="{{drink['strDrinkThumb']}}" height="100" width="80"></td>
+            </tr>
             
             <tr>
                 <td>Drink Name:</td>
@@ -30,42 +31,51 @@
             </tr>
             <tr>
                 <td>Ingredients:</td>
+                <td>
                 {% for details in drink_details %}
+                
                     {% for item in details %}
-                        <td>{{ item }}</td>
-                    {% endfor %}
+                    {{ item }}
+                 
+                    {% endfor %} ,
+                
                 {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
     <!-- <button class="btn btn-primary btn-lg btn-block"><a href="/review/{{user.id}}"></a>Write review</button> -->
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
     <a href="/review/{{ user.id }}?drink={{drink['strDrink']}}" class="btn btn-primary btn-lg btn-block">Write review</a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <div class="form-group">
-                <form action="/add_favorite/{{drink}}?userid={{user.id}}" method="POST">
+            <form action="/add_favorite?userid={{user.id}}&drinkname={{drink['strDrink']}}" method="POST">
                 <button class="btn btn-primary btn-lg btn-block">Store in Favorites</button>
-                </form>
-            </div>
+            </form>
         </div>
-</div>
-<div class="container">
-    <div class="row">
-
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <h2>Reviews</h2>
     </div>
     <div class="row">
         {% for review in reviews %}
-        <h4 class="col-md-3">{{ review.drinkname }}</h4>
-        <p class="col-md-9">{{ review.review }}</p>
+        <h4 class="col-md-2 text-right">{{ review.title }}</h4>
+        <p class="col-md-9 text-left">{{ review.review }}</p>
         {% endfor %}
     </div>
+    <div class="row">
+    {% if user %}
+    <form method="GET" action="/user_page/{{ user.id }}">
+        <button type="submit" class="btn btn-primary">Return</button>
+    </form>
+    {% endif %}
+    </div>
+ 
 </div>
 
 <!-- <h1>{{drink_name}}</h1>

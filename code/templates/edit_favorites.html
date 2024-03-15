@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div class="container">
+    <div class="row">
+        <h1>Edit your favorites</h1>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<p>{{ favorites }}</p>
+{% for f in favorites %}
+<p>{{ f.drinkname }}{{ f.id }}</p>
+{% endfor %}
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+        <tbody>
+            {% for f in favorites %}
+            <tr>
+                <td><a href="/delete_favorite/{{ f.id }}?userid={{userid}}">Delete</a></td>
+            <td><h3>{{ f.drinkname }}</h3></td>
+        </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+{% endblock %}

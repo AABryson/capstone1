@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <img src="{{drink['strDrinkThumb']}}">
+    <img src="{{drink['strDrinkThumb']}}" height="120" width="90">
     <table class="table table-striped">
         <tbody>
             
@@ -23,11 +23,16 @@
             </tr>
             <tr>
                 <td>Ingredients:</td>
+                <td>
                 {% for details in drink_details %}
+                
                     {% for item in details %}
-                        <td>{{ item }}</td>
-                    {% endfor %}
+                    {{ item }}
+                 
+                    {% endfor %} ,
+                
                 {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
